@@ -10,16 +10,9 @@
 //! `sys_` then the name of the syscall. You can find functions like this in
 //! submodules, and you should also implement syscalls this way.
 
-/// write syscall
-const SYSCALL_WRITE: usize = 64;
-/// exit syscall
-const SYSCALL_EXIT: usize = 93;
-/// yield syscall
-const SYSCALL_YIELD: usize = 124;
-/// gettime syscall
-const SYSCALL_GET_TIME: usize = 169;
-/// taskinfo syscall
-const SYSCALL_TASK_INFO: usize = 410;
+//this mod is sysconfig
+pub mod sysconfig;
+use sysconfig::*;
 
 mod fs;
 mod process;

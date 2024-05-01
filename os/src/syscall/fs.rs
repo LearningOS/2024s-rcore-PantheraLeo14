@@ -2,9 +2,13 @@
 
 const FD_STDOUT: usize = 1;
 
+use crate::syscall::sysconfig::*;
+use crate::task::update_syscall_times;
+
 /// write buf of length `len`  to a file with `fd`
 pub fn sys_write(fd: usize, buf: *const u8, len: usize) -> isize {
     trace!("kernel: sys_write");
+    update_syscall_times(SYSCALL_WRITE);
     match fd {
         FD_STDOUT => {
             let slice = unsafe { core::slice::from_raw_parts(buf, len) };
